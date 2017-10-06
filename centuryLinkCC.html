@@ -1,0 +1,132 @@
+<!-- This is the code for James Steimel's CenturyLink coding challenge.
+     It uses angularjs and javascript to retrieve followers from Github
+     using API calls.  Thanks for checking it out!
+-->
+<!DOCTYPE html>
+<html  ng-app='app'>
+<head>
+  <title>James Steimel - CenturyLink Coding Challenge</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <style>
+	.wrap {
+		word-wrap: break-word;
+		background-color: lightgreen;
+	}
+  </style>
+  <script>
+		var app = angular.module('app', []);
+		app.controller('MainCtrl', function($http){
+			var vm = this;
+      //  Function called with user input Github ID. //
+			vm.fetchData = function(user){
+        //  Eliminate Loading message by setting it to false. //
+				vm.loading = false;
+        //  Now get the first five followers for the original Github id (fist level). //
+				$http.get('https://api.github.com/users/' + user.name + '/followers?per_page=5').then(function(res){
+          //  Now vm.data holds the JSON data from the first 5 followers.
+          vm.data = res;
+          if(vm.data.data[0] !== undefined){
+            //  Add the first level to the document.  //
+            var firstLevel = document.createTextNode(JSON.stringify(vm.data));
+            var firstChild = document.getElementById('firstDiv');
+            firstChild.parentNode.insertBefore(firstLevel, firstChild);
+          }
+          else{
+            var firstLevel = document.createTextNode("There are no first level followers.");
+            var firstChild = document.getElementById('firstDiv');
+            firstChild.parentNode.insertBefore(firstLevel, firstChild);
+          }
+          //  Here we loop through those 5 followers, and get the second level of followers.   //
+          for(var i = 0; i < 5; i++){
+            //  Check if there is a follower.  //
+            if(vm.data.data[i] !== undefined){
+              //  Get the next 5 followers for each of the first level followers//
+              $http.get('https://api.github.com/users/' + vm.data.data[i].login + '/followers?per_page=5').then(function(res){
+                //  The second level of followers JSON data is stored in vm.secondary.  //
+                vm.secondary = res;
+                //  And now we add them to the document //
+                var secondPTag1 = document.createElement("P");
+                var secondBanner = document.createTextNode(JSON.stringify('HERE IS A FOLLOWER RETURN:'));
+                secondPTag1.appendChild(secondBanner);
+                document.getElementById("secondDiv").appendChild(secondPTag1);
+                var secondPTag2 = document.createElement("P");
+                var  JSONData2 = document.createTextNode(JSON.stringify(vm.secondary));
+                secondPTag2.appendChild(JSONData2);
+                document.getElementById("secondDiv").appendChild(secondPTag2);
+
+                //  Now to loop through for each of the secondary followers and get first 5 third level followers. //
+                for(var j = 0; j < 5; j++){
+                  //  Check if there is a second level follower//
+                  if(vm.secondary.data[j] !== undefined){
+                    //  Get the next 5 followers for each of the second level followers//
+                    $http.get('https://api.github.com/users/' + vm.secondary.data[j].login + '/followers?per_page=5').then(function(res){
+                      //  The third level of followers JSON data is stored in vm.third.  //
+                      vm.third = res;
+                      //  And now we add them to the document //
+                      var thirdPTag1 = document.createElement("P");
+                      var thirdBanner = document.createTextNode(JSON.stringify('HERE IS A FOLLOWER RETURN:'));
+                      thirdPTag1.appendChild(thirdBanner);
+                      document.getElementById("thirdDiv").appendChild(thirdPTag1);
+                      var thirdPTag2 = document.createElement("P");
+                      var JSONData3 = document.createTextNode(JSON.stringify(vm.third));
+                      thirdPTag2.appendChild(JSONData3);
+                      document.getElementById("thirdDiv").appendChild(thirdPTag2);
+                    })
+                  }
+                }
+              })
+            }
+          }
+				})
+			}
+		})
+  </script>
+</head>
+
+<body ng-controller='MainCtrl as vm'>
+	<div id="lead">
+        <div class="container" id="lead-content">
+            <h1>James Steimel</h1>
+            <h2>CenturyLink Coding Challenge</h2>
+        </div>
+	</div>
+	<div class="container" id="github-data">
+
+    <label for="enter">Enter Github ID for follower lookup:</label>
+		<input type="text" ng-model="user.name" name="enter">
+		<button ng-click="vm.fetchData(user)">Search</button>
+		<h4 ng-if="vm.loading === true">Searching...</h4>
+
+    <h2 ng-if="vm.loading === false">First Level Followers</h2>
+    <br></br>
+
+    <div class="wrap" id="firstParent">
+      <div class="wrap" id="firstDiv"></div>
+    </div>
+    <br></br>
+
+    <h2 ng-if="vm.loading === false">Second Level Followers</h2>
+    <br></br>
+
+    <div class="wrap" id="secondParent">
+      <div class="wrap" id="secondDiv"></div>
+    </div>
+    <br></br>
+
+    <h2 ng-if="vm.loading === false">Third Level Followers</h2>
+    <br></br>
+
+    <div class="wrap" id="thirdParent">
+      <div class="wrap" id="thirdDiv"></div>
+    </div>
+    <br></br>
+
+  </div>
+</body>
+
+</html>
