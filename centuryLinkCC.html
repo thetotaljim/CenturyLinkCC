@@ -13,21 +13,23 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <style>
-	.wrap {
-		word-wrap: break-word;
-		background-color: lightgreen;
-	}
+    .wrap {
+	word-wrap: break-word;
+	background-color: lightgreen;
+    }
   </style>
   <script>
-		var app = angular.module('app', []);
-		app.controller('MainCtrl', function($http){
-			var vm = this;
+    var app = angular.module('app', []);
+    
+    app.controller('MainCtrl', function($http){
+      
+      var vm = this;
       //  Function called with user input Github ID. //
-			vm.fetchData = function(user){
+	vm.fetchData = function(user){
         //  Eliminate Loading message by setting it to false. //
-				vm.loading = false;
+	vm.loading = false;
         //  Now get the first five followers for the original Github id (fist level). //
-				$http.get('https://api.github.com/users/' + user.name + '/followers?per_page=5').then(function(res){
+	  $http.get('https://api.github.com/users/' + user.name + '/followers?per_page=5').then(function(res){
           //  Now vm.data holds the JSON data from the first 5 followers.
           vm.data = res;
           if(vm.data.data[0] !== undefined){
@@ -82,15 +84,15 @@
               })
             }
           }
-				})
-			}
-		})
+	})
+      }
+    })
   </script>
 </head>
 
 <body ng-controller='MainCtrl as vm'>
-	<div id="lead">
-        <div class="container" id="lead-content">
+<div id="lead">
+	<div class="container" id="lead-content">
             <h1>James Steimel</h1>
             <h2>CenturyLink Coding Challenge</h2>
         </div>
