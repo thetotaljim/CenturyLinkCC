@@ -16,7 +16,7 @@ To use this file, download it and then copy the file's path and paste into a bro
 
 After loading the file into a browser window, enter a Github ID into the search bar, and press the search button.
 
-![Picture](https://github.com/thetotaljim/CenturyLinkCC/centuryLinkAPI.png)
+![Picture](https://github.com/thetotaljim/CenturyLinkCC/blob/master/centuryLinkAPI.png)
 
 The given Github ID will be used to find the user's first 5 followers.  After the first 5 users have been found (first level), then a second level search will be done on these 5 followers to find the first 5 followers of each one (second level). This process will then be repeated for each of those followers (third level). The JSON returned from each API call will be displayed on the page separated by what level of search it belongs to. 
 
