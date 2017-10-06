@@ -1,4 +1,5 @@
 # CenturyLinkCC
+[![HitCount](http://hits.dwyl.io/thetotaljim/CenturyLinkCC.svg)](http://hits.dwyl.io/thetotaljim/CenturyLinkCC)
 
 >CenturyLink Coding Challenge: Github API
 
