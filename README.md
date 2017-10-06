@@ -2,7 +2,7 @@
 
 >CenturyLink Coding Challenge: Github API
 
-Here is my response to the CenturyLink Coding Challenge. It uses Github APIs to get three levels of follower data when given an initial Github ID.  This file was written using AngularJS, JavaScript, and HTML.  It was completed in an attempt to secure a position at CenturyLink. Thanks for checking it out!
+Here is my response to the CenturyLink Coding Challenge. It uses Github APIs to get three levels of follower data when given an initial Github ID.  This file was written using AngularJS, JavaScript, Bootstrap, and HTML.  It was completed in an attempt to secure a position at CenturyLink. Thanks for checking it out!
 
 ## Requirements
 
