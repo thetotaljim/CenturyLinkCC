@@ -1,7 +1,7 @@
 # Coding_Challenge-GithubAPI
-[![HitCount](http://hits.dwyl.io/thetotaljim/CenturyLinkCC.svg)](http://hits.dwyl.io/thetotaljim/CenturyLinkCC)
+[![HitCount](http://hits.dwyl.io/thetotaljim/Coding_Challenge.svg)](http://hits.dwyl.io/thetotaljim/Coding_Challenge-GithubAPI)
 
->CenturyLink Coding Challenge: Github API
+>Coding Challenge: Github API
 
 Here is my response to a Coding Challenge to use Github APIs to retrieve three levels of follower data when given an initial Github ID.  This file was written using AngularJS, JavaScript, Bootstrap, and HTML.  Thanks for checking it out!
 
