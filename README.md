@@ -1,9 +1,9 @@
-# CenturyLinkCC
+# Coding_Challenge-GithubAPI
 [![HitCount](http://hits.dwyl.io/thetotaljim/CenturyLinkCC.svg)](http://hits.dwyl.io/thetotaljim/CenturyLinkCC)
 
 >CenturyLink Coding Challenge: Github API
 
-Here is my response to the CenturyLink Coding Challenge. It uses Github APIs to get three levels of follower data when given an initial Github ID.  This file was written using AngularJS, JavaScript, Bootstrap, and HTML.  It was completed in an attempt to secure a position at CenturyLink. Thanks for checking it out!
+Here is my response to a Coding Challenge to use Github APIs to retrieve three levels of follower data when given an initial Github ID.  This file was written using AngularJS, JavaScript, Bootstrap, and HTML.  Thanks for checking it out!
 
 ## Requirements
 
@@ -23,7 +23,7 @@ The given Github ID will be used to find the user's first 5 followers.  After th
 
 ## Contents 
 
-centuryLinkCC.html
+coding_challenge-githubapi.html
 
 ## Meta
 
